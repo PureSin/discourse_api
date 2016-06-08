@@ -92,7 +92,6 @@ module DiscourseApi
       @user_agent ||= "DiscourseAPI Ruby Gem #{DiscourseApi::VERSION}"
     end
 
-    private
 
     def connection
       @connection ||= Faraday.new connection_options do |conn|
@@ -111,6 +110,12 @@ module DiscourseApi
         end
       end
     end
+
+    def set_connection(con)
+      @connection = con
+    end
+
+    private
 
     def request(method, path, params={})
       unless Hash === params
